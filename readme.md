@@ -9,4 +9,3 @@ Link: https://medium.com/@agilbert.agtech/a-slick-crud-application-built-using-p
 For the user interface, I'm following the clean aesthetic done by Mbithe Nzomo on her CRUD web app.
 
 Link: https://scotch.io/tutorials/build-a-crud-web-app-with-python-and-flask-part-two
-# Yountville
