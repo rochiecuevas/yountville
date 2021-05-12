@@ -1,0 +1,8 @@
+.topnav {
+    float: right; 
+    padding-right: 16px;
+}
+
+.active {
+    color: rgb(194, 43, 106);
+}

@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    </head>    
+    <body>
+        <!-- Navigation Menu -->
+        <div class = "topnav">
+            <a href = "/">Dashboard</a>
+            <a href = "/building">Buildings</a>
+            <a href = "/equipment">Equipment</a>
+            <a href = "/staff">Staff</a>
+        </div> 
+        <br>
+        <br>
+        <!-- Title -->
+        <div class = "container">
+            <div class = "row">
+                <div class = "mx-auto" style = "width: 45%;">
+                    <h1>Equipment</h1>
+                    <div class = "text-box">
+                        <p><strong>Fill in the form with information about equipment.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+         <!-- Equipment form -->
+        <div class = "container">
+            <div class = "row">
+                    {% block content %}
+                    {% if "query_equipmentedit" in request.url %}
+                <div class = "mx-auto">
+    
+                    {% for eresult in eresults %}
+                    <form action = "edit" method = "POST">
+                        <p>Building ID: <input class = "form-control" type = "text" name = "Building_ID", style = "width: 100%;" value = "{{eresult['Building_ID']}}"></p>     
+                        <p>Equipment Name: <input class = "form-control" type = "text" name = "Equipment_Name", style = "width: 100%;" value = "{{eresult['Equipment_Name']}}"></p> 
+                        <p>Part: <input class = "form-control" type = "text" name = "Part", style = "width: 100%;" value = "{{eresult['Part']}}"></p> 
+                        <p>Make: <input class = "form-control" type = "text" name = "Make", style = "width: 100%;" value = "{{eresult['Make']}}"></p> 
+                        <p>Make Date: <input class = "form-control" type = "text" name = "Make_Date", style = "width: 100%;" value = "{{eresult['Make_Date']}}"></p> 
+                        <p>Catalogue No.: <input class = "form-control" type = "text" name = "Catalogue_No", style = "width: 100%;" value = "{{eresult['Catalogue_No']}}"></p> 
+                        <p>Frame: <input class = "form-control" type = "text" name = "Frame", style = "width: 100%;" value = "{{eresult['Frame']}}"></p> 
+                        <p>Model No.: <input class = "form-control" type = "text" name = "Model_No", style = "width: 100%;" value = "{{eresult['Model_No']}}"></p> 
+                        <p>Serial No.: <input class = "form-control" type = "text" name = "Serial_No", style = "width: 100%;" value = "{{eresult['Serial_No']}}"></p> 
+                        <p>ID No.: <input class = "form-control" type = "text" name = "ID_No", style = "width: 100%;" value = "{{eresult['ID_No']}}"></p> 
+                        <p>Power (hp): <input class = "form-control" type = "text" name = "Power_hp", style = "width: 100%;" value = "{{eresult['Power_hp']}}"></p> 
+                        <p>Voltage (V): <input class = "form-control" type = "text" name = "Voltage_V", style = "width: 100%;" value = "{{eresult['Voltage_V']}}"></p> 
+                        <p>Current (amp): <input class = "form-control" type = "text" name = "Current_amp", style = "width: 100%;" value = "{{eresult['Current_amp']}}"></p> 
+                        <p>RPM: <input class = "form-control" type = "text" name = "RPM", style = "width: 100%;" value = "{{eresult['RPM']}}"></p> 
+                        <p>Frequency (Hz): <input class = "form-control" type = "text" name = "Frequency_hz", style = "width: 100%;" value = "{{eresult['Frequency_hz']}}"></p> 
+                        <p>Phase: <input class = "form-control" type = "text" name = "PH", style = "width: 100%;" value = "{{eresult['PH']}}"></p> 
+                        <p>Head (ft): <input class = "form-control" type = "text" name = "HD_FT", style = "width: 100%;" value = "{{eresult['HD_FT']}}"></p> 
+                        <p>Capacity (gal/min): <input class = "form-control" type = "text" name = "CAP_GPM", style = "width: 100%;" value = "{{eresult['CAP_GPM']}}"></p> 
+                        <p>Date installed: <input class = "form-control" type = "text" name = "Date_installed", style = "width: 100%;" value = "{{eresult['Date_installed']}}"></p> 
+                        <p>Remarks: <input class = "form-control" type = "text" name = "Remarks", style = "width: 100%;" value = "{{eresult['Remarks']}}"></p> 
+                        <input type = "hidden" name = "old_Equipment_Name" value = "{{eresult['Equipment_Name']}}"/>
+                        <input type = "hidden" name = "old_Part" value = "{{eresult['Part']}}"/>
+    
+                        {% endfor %}
+    
+                        <br>
+    
+                        <p><input class="btn-primary" type = "submit" value = "Update Data" /></p>
+    
+                    </form>
+    
+                </div>
+    
+                {% else %}
+                <div class = "mx-auto">
+    
+                    <form action = "insert" method = "POST">
+                        <p>Building ID: <input class = "form-control" type = "text" name = "Building_ID", style = "width: 100%;" ></p>     
+                        <p>Equipment Name: <input class = "form-control" type = "text" name = "Equipment_Name", style = "width: 100%;"></p> 
+                        <p>Part: <input class = "form-control" type = "text" name = "Part", style = "width: 100%;"></p> 
+                        <p>Make: <input class = "form-control" type = "text" name = "Make", style = "width: 100%;"></p> 
+                        <p>Make Date (YYYY-MM-DD): <input class = "form-control" type = "text" name = "Make_Date", style = "width: 100%;"></p> 
+                        <p>Catalogue No.: <input class = "form-control" type = "text" name = "Catalogue_No", style = "width: 100%;"></p> 
+                        <p>Frame: <input class = "form-control" type = "text" name = "Frame", style = "width: 100%;"></p> 
+                        <p>Model No.: <input class = "form-control" type = "text" name = "Model_No", style = "width: 100%;"></p> 
+                        <p>Serial No.: <input class = "form-control" type = "text" name = "Serial_No", style = "width: 100%;"></p> 
+                        <p>ID No.: <input class = "form-control" type = "text" name = "ID_No", style = "width: 100%;"></p> 
+                        <p>Power (hp): <input class = "form-control" type = "text" name = "Power_hp", style = "width: 100%;"></p> 
+                        <p>Voltage (V): <input class = "form-control" type = "text" name = "Voltage_V", style = "width: 100%;"></p> 
+                        <p>Current (amp): <input class = "form-control" type = "text" name = "Current_amp", style = "width: 100%;"></p> 
+                        <p>RPM: <input class = "form-control" type = "text" name = "RPM", style = "width: 100%;"></p> 
+                        <p>Frequency (Hz): <input class = "form-control" type = "text" name = "Frequency_hz", style = "width: 100%;"></p> 
+                        <p>Phase: <input class = "form-control" type = "text" name = "PH", style = "width: 100%;"></p> 
+                        <p>Head (ft): <input class = "form-control" type = "text" name = "HD_FT", style = "width: 100%;"></p> 
+                        <p>Capacity (gal/min): <input class = "form-control" type = "text" name = "CAP_GPM", style = "width: 100%;"></p> 
+                        <p>Date installed: <input class = "form-control" type = "text" name = "Date_installed", style = "width: 100%;"></p> 
+                        <p>Remarks: <input class = "form-control" type = "text" name = "Remarks", style = "width: 100%;"></p> 
+                        <br>
+                        <p><input class = "btn-primary" type = "submit" value = "Submit" /> </p>
+                    </form>
+                </div>
+        
+                    {% endif %}
+                    {% endblock content %}
+            </div>
+        </div>
+        </div> 
+        <br>
+        <br>
+        <!-- Footer -->
+        <footer>
+            <div class = "container">
+                <div class = "row">
+                    <p>RPCuevas 2021<br><a href = "mailto: rochiecuevas@gmail.com">rochiecuevas@gmail.com</a></p>
+
+                </div>
+            </div>
+        </footer>
+    </body>
+    <!-- Style -->
+    <style>
+        .topnav{
+            overflow: hidden;
+        }
+
+        a{
+            color: #327299;
+        }
+
+        .topnav a {
+            float: right;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #d2d2d2;
+            color: #327299;
+        }
+
+        .btn {
+            border: 2px solid #327299;
+            background: transparent;
+            color: #327299;
+            border-radius: 6px;
+        }
+
+        .btn:hover{
+            border: 2px solid rgb(194, 43, 106);
+            color:rgb(194, 43, 106);
+        }
+
+        .table {
+            margin-left: auto; 
+            margin-right: auto; 
+            width: 90%;
+        }
+
+        footer {
+            padding: 10px 10px 0px 10px;
+            background-color: #d2d2d2;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 60px; 
+        }
+
+        .text-box {
+            background-color: #86c8f1;
+            padding: 10px 10px 0px 10px;
+            border: 2px solid #5c9ecc;
+            border-radius: 6px;
+        }
+    </style>
+</html>
