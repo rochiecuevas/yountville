@@ -1,1 +1,1 @@
-web: gunicorn Yountville.app:app
+web: gunicorn yville.flask_app:app
